@@ -1,0 +1,1 @@
+bf4051091bea4cb2d84b33bbf93e5723  karman.c

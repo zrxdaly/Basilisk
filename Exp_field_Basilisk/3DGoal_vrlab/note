@@ -1,0 +1,5 @@
+this is the folder that contains the simulation data from 3D vrlab
+
+the folder outside contains the data of no-land surface parameterization (get the results pretty fast)
+
+the landpara folder contain the results almostly from vincent code which include the SGS and land parameteriztion (these simualtions took much longer time than previous folder)

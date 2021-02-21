@@ -1,0 +1,2 @@
+7c087103812f325926035ef0147c8ddd  goal_fan_norotate.c
+fdbe0f8e7654968ac5cfd2c86b7649be  goal_fan_norotate.s

@@ -1,0 +1,236 @@
+pristine:a1f3155b5f716b518b63ea8c102d75914d891ee45678a2f5f74f5440ee7b3266
+Starting with inventory:
+0000008088-b55561e729609726880e77ea298f326176fc7f58c18097de2fe38a959856df07
+[TAG release 20-04-28
+Stephane Popinet <popinet@basilisk.fr>**20200514091618
+ Ignore-this: d9e560653afac6ca3f5dbcf5f930bbaa
+] 
+hash: 0000005247-655456659ec30b23671482efa39d1957c8ae5d2527c19b0f591bc690531ee8e4
+[Support for "layers"
+Stephane Popinet <popinet@basilisk.fr>**20200502161519
+ Ignore-this: b11d5aee99a007f83e46add2ca755e8c
+] 
+hash: 0000001431-f9d014048bb1862e866261e0b19152736eef47f900c2b2e3eb0bef891279c071
+["Block" scalars i.e. contiguous blocks of several scalars
+Stephane Popinet <popinet@basilisk.fr>**20200503125759
+ Ignore-this: a7881e1d4c0f356115d78c738e4fb070
+] 
+hash: 0000022183-c8b92f232ada4dd739d54299ebe63a47e70212c32f6ea16c4d9127ebd03f2940
+[Updated test cases for refactored multilayer solver
+Stephane Popinet <popinet@basilisk.fr>**20200503125818
+ Ignore-this: 201ea956e49a35474cf55f92913e5e25
+] 
+hash: 0001349856-b3a36272c08165cb34f72f6e3107634785efb9947f663b82dd8990be35c31765
+[Rewrite of the multilayer solver using "block" fields
+Stephane Popinet <popinet@basilisk.fr>**20200503125832
+ Ignore-this: ded15e55991dc656a393ed2e5ad89572
+] 
+hash: 0000036521-b592511615d9833231efdc15e8f4f415e5e0f558b0024c2ace66af452ccaa750
+[Minor optimisation for GOTM module
+Stephane Popinet <popinet@basilisk.fr>**20200505164804
+ Ignore-this: 7b7a3d7d35a02e16aa0eb712f0b765db
+] 
+hash: 0000001407-906850f246c32576554867c44a1a521f857e5f1e7f40665df1cd1dd58d6f26ea
+[New Basilisk View function: labels()
+Stephane Popinet <popinet@basilisk.fr>**20200511161859
+ Ignore-this: 77d45cef57735064e494612822435e7b
+] 
+hash: 0000001666-852d44d9ab7f60ebf99054dbe3ff8a336c1ea59899b63b50114d84525c07e12b
+[Fixed divide-by-zero in limiters
+Stephane Popinet <popinet@basilisk.fr>**20200512142408
+ Ignore-this: 3c09af88888094a947f1b16bcd9a3879
+] 
+hash: 0000000634-8055d1da08c6423f62641bfe275af68a56a52eaadbdc679a9bf9615f33c7e27a
+[Changed attribute for terrain due to conflict with VOF
+Stephane Popinet <popinet@basilisk.fr>**20200512152948
+ Ignore-this: 36a24306aa877b86195a5322b8c010a8
+] 
+hash: 0000000505-0f925de0fcc2535c3b87c7423cec5a7f7465b7cb59ecc841a6e8dbc181a482ab
+[The multilayer solver uses face fluxes/heights rather than velocity
+Stephane Popinet <popinet@basilisk.fr>**20200512154114
+ Ignore-this: 8e2db4b873570165fa7f5fd9cb886901
+ 
+ This is much more consistent generally and also gives consistent pressure 
+ gradients near wet/dry boundaries.
+] 
+hash: 0001729684-8db888f3b84d7a093bf9f764e9d1a3d46a4434cfccd1266d9ac23ad0d1db5d99
+[vectors() draws proper vectors (which are also zoom dependent)
+Stephane Popinet <popinet@basilisk.fr>**20200513082638
+ Ignore-this: 62fb6d87fd1a0b5164a61aa83ab2e137
+] 
+hash: 0000000899-5955d266a8671cccb53d7c162542d073107e4da257deddf4cbf3a53bf9b398d3
+[New 'z' option to display 3D surfaces with squares()
+Stephane Popinet <popinet@basilisk.fr>**20200513142708
+ Ignore-this: aad00d1d321c6bb77d9c32402c246852
+] 
+hash: 0000004753-23421d777a84b32dc5a5486487fb700ef658194bcdccefe2073df1366a558d38
+[Updated test case references for multilayer
+Stephane Popinet <popinet@basilisk.fr>**20200514084044
+ Ignore-this: bb917a75dfead249256906231dcf2d12
+] 
+hash: 0001245772-c6d3a0e06ef3944dac4b636eab51867ee5b0ded6687b21fd85b6f23cda89536a
+[Multilayer breaking wave example uses bview rather than gnuplot
+Stephane Popinet <popinet@basilisk.fr>**20200514084423
+ Ignore-this: 56ede39a7fee7fbb655193d9be8703f2
+] 
+hash: 0000004627-d372c63fa7dc8314d9ba11be5ef828509598e7d6c781b2ebdc062d082622a9fd
+[Removed error 403 for access denied for bots
+Stephane Popinet <popinet@basilisk.fr>**20200514085851
+ Ignore-this: 9f23f077da4a0518ad0092b000b36ea4
+ 
+ To avoid clogging the server error logs
+] 
+hash: 0000000266-b1022e6bac789872c01289f6c7079caf8f56eecb0d6e7122d05b0c3328d92ef2
+[Cosmetics
+Stephane Popinet <popinet@basilisk.fr>**20200514085903
+ Ignore-this: 8171fa526c561df1b4974b1c509ae75b
+] 
+hash: 0000000312-62a7bf0ca278cba72e02d9068589f0bdb2bd73e910cc20bb906fb249c18624b4
+[Updated notation
+Stephane Popinet <popinet@basilisk.fr>**20200612083947
+ Ignore-this: 2ed0546112987a35fb44af6df7ac8491
+] 
+hash: 0000206258-569a974f2f6bf5558b83073ebee1023cfc09bb1e9ec40410fd46aaee7cb27342
+[-DLAYERS=1 is not required anymore
+Stephane Popinet <popinet@basilisk.fr>**20200612142343
+ Ignore-this: 65d3a917e044a78f32ea461a0a0e514f
+] 
+hash: 0000007277-e30ef68f4cc52dc5bf4de4dae57fe344c3d910165acaa80b673e26c09807b2a0
+[Breaking wave case runs longer
+Stephane Popinet <popinet@basilisk.fr>**20200612142923
+ Ignore-this: 7048b4a851629001d3e7095b27ed4ea0
+] 
+hash: 0000000812-f515947c24718338ac2d8d7be0a9f0625c48312416673017c5e2a01edf0a876a
+[Better discretisation of the RHS for the non-hydrostatic layered solver
+Stephane Popinet <popinet@basilisk.fr>**20200612143852
+ Ignore-this: c8965e34535f7b12b5d824d50245e2bd
+ 
+ It should now be galilean-invariant. Thanks to Clément Robert and
+ Arnaud Antkowiak for pointing this out.
+] 
+hash: 0001020306-1b380903b29da233ace1e10d99c83f5048bc101d20ac3a0adf5fd350cdb1849f
+[Inlined bibtex understands HAL identifiers
+Stephane Popinet <popinet@basilisk.fr>**20200615093126
+ Ignore-this: 25e7b29dbdd691f135d9e7c2b349b37a
+ 
+ For example:
+ 
+ @hal{popinet2018, hal-01528255}
+] 
+hash: 0000000695-8ba002a2d0e8ca4d91861084ca257a0cb0496c054082087247ef175e995a417e
+[Use HAL references
+Stephane Popinet <popinet@basilisk.fr>**20200615094259
+ Ignore-this: 9dad42e74b64bbda0275f442b2fd7afb
+] 
+hash: 0000001337-7c99bae94e247e7918d1e5293847a19f23635f68a2b8c6fde333ee6bfbc3c6f3
+[Galilean invariance test
+Clement Robert <clement.robert@m4x.org>**20200615144100
+ Ignore-this: c9ee6b990d6e2760172ca139c654abdb
+] 
+hash: 0000008521-798806f81c56b98e7fe598294a18db6793fb9865dd46c272675cc45bada3f7d6
+[Older versions of gifsicle require color palette stuff
+Stephane Popinet <popinet@basilisk.fr>**20200615144551
+ Ignore-this: bd625e30714fe6d07b5988d4c3644969
+] 
+hash: 0000000336-23eea42ab79604ea3ad2a5cd60fadcfe17d9db6e4d7904e63b75d88da5304eef
+[Renamed b to zb for compatibility with other solvers
+Stephane Popinet <popinet@basilisk.fr>**20200615120000
+ Ignore-this: 18afd1ebaaf4e5d6e44ebcc9b06b8351
+] 
+hash: 0000000482-4fc295ef2e1c1134a9205eba9bbae9657bf2474aea30810d605aca1c387d3c8a
+[Fix for normal computation
+Stephane Popinet <popinet@basilisk.fr>**20200615120026
+ Ignore-this: f52ffe42637448a99aae6e0562120e4c
+] 
+hash: 0000000399-f4c1d8ac4a2aad8b851892cdf23bcfabea98b490c8d830e21385113e6712d541
+[Stommel gyre
+Stephane Popinet <popinet@basilisk.fr>**20200515095003
+ Ignore-this: 39ca950d5456d2c71cea3c9742bb00c
+] 
+hash: 0000009855-997ac1aa55b89d604275db438fbc49d310a6af0210812a717a12dac0c271105e
+[Non-linear geostrophic adjustment for multilayer
+Stephane Popinet <popinet@basilisk.fr>**20200518132601
+ Ignore-this: 1532a0c706d2a90d4a2380006ff77245
+] 
+hash: 0000031284-f7388ee9b943d9a0ed3d558dfd4c9641c232e77dac5d1778e3d0114df58b2da2
+[Geostrophic adjustment test case
+Stephane Popinet <popinet@basilisk.fr>**20200617122232
+ Ignore-this: 3e480925006feab75bb3609d303220d6
+] 
+hash: 0000132933-23c8051e05e33863cd2399504f479ef469e61ee7fda3b67d09332e9717ecfee6
+[Implicit barotropic integration for multilayer
+Stephane Popinet <popinet@basilisk.fr>**20200617163439
+ Ignore-this: 94d1a2f464d3407f7dadf19d18f8cecc
+] 
+hash: 0001355091-acfe9c0db47f5c8a67967e40632bee617aa0f702de3577f43943c76334d4fcf7
+[tags and itags take directories/redundancies into account
+Stephane Popinet <popinet@basilisk.fr>**20200618104015
+ Ignore-this: e8302512167965d8efe1683e71a216de
+] 
+hash: 0000000708-df7439d86e02b572e6e7891be7c8fee65d1f6591bfcc818d8757787df41f1770
+[Fluxes through sections
+Stephane Popinet <popinet@basilisk.fr>**20200618151723
+ Ignore-this: 649c2fa59999ee2df4e1552d51c69b5b
+] 
+hash: 0000002894-98272619bad3685634694dad8fb8481654f6c42338c2c365009f80e24b9d1edd
+[Better discretisation of Navier condition in the layered diffusion solver
+Clement Robert <clement.robert.2014@m4x.org>**20201008085950
+ Ignore-this: be382e2c2de52828378947c1c856c08b
+ 
+ The third-order discretisation of the Navier slip-condition is improved with
+ two modification :
+ 1-A special case is added for monolayer flows (upper ghost layer taken into
+ account)
+ 2-The discretisation considers averaged velocities instead of collocated
+ velocities in the bottom layers.
+ 
+] 
+hash: 0000852436-fcb4914fd5f27173a3bd6b1181e312c214cc18649895c9e55addac5f63e04eee
+[The bview parser now recognizes underscore as a valid character for identifiers
+Stephane Popinet <popinet@basilisk.fr>**20201021103412
+ Ignore-this: 7c2526a8d91b4294209d1c1b24c75a7b
+] 
+hash: 0000000303-9958f20b2653e39415ba019839b3ac076f577900c579d3c375115bb8548f66ff
+[Added compression term to the VOF tracer advection scheme
+Stephane Popinet <popinet@basilisk.fr>**20200324142908
+ Ignore-this: c7e5678a391f36d8b45c49125cf83e4a
+ 
+ Note that this scheme is used by the momentum-conserving Navier-Stokes
+ solvers.
+] 
+hash: 0000001378-9d4c3182938e0317df3151bb490b57ce489f54f937494d53b14e093b30532d2f
+[VOF concentrations are refined properly
+Stephane Popinet <popinet@basilisk.fr>**20200427102422
+ Ignore-this: 1e4d95a17158e84dc72e7dc6ee90db4d
+] 
+hash: 0000010018-bf2d39296c9b5a17aa557b6cf3158edd5aa1f222590d437cd46c17cd63c9961b
+[Fixed inconsistent VOF concentration refinement for "inverse" tracers
+Stephane Popinet <popinet@basilisk.fr>**20200508092718
+ Ignore-this: ac3c3ec34b212f53bdc7d80af8f98351
+] 
+hash: 0000000510-4c6c4dbc27009c6c18b30508ae9d40df2289114853282af8ad5a7e9e4c4069dc
+[Workaround for a qcc bug
+Stephane Popinet <popinet@basilisk.fr>**20201022131619
+ Ignore-this: 38b156763311288b681dc150e266a3b0
+] 
+hash: 0000000467-01222de35727a04c6b75e644631588392ff9455639ee01728d6f5250146f8c61
+[Make sure that attributes are applied to VOF-advected tracers
+Stephane Popinet <popinet@basilisk.fr>**20201022131900
+ Ignore-this: 5fb135b937191969934d9f7889b89621
+] 
+hash: 0000000419-8aeff3aa5e3c81f3fc6c845e6d6d6ce34eb8e8d0a8488c4d725d67c3838c7ddb
+[A few minor improvements
+Stephane Popinet <popinet@basilisk.fr>**20201022132007
+ Ignore-this: 407c7206e2b29e0f10094008d79b4a55
+] 
+hash: 0000000857-41bce97079b203a5eea323578e294b75bb01dfe9d3fabb95827f7352f63296ab
+[Fix for memory corruption when running successive conserving.h simulations
+Stephane Popinet <popinet@basilisk.fr>**20201022132057
+ Ignore-this: e7f40bc5747004a48bf17fafde195691
+] 
+hash: 0000000269-0df0ef4be1f8d9a49c3024dc52fb518ae57c695b86e351438930262f0e3cefd5
+[Fix for two-phase and momentum and updated test refs
+Stephane Popinet <popinet@basilisk.fr>**20201023162900
+ Ignore-this: 93f301deb8ff2b6620bb80d1c1729957
+] 
+hash: 0000855302-660388c37a9c584346ddeae97cb90d688a561d769b1df80e4bbd35da3b8ad516

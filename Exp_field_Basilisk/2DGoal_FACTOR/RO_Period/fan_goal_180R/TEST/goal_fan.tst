@@ -1,0 +1,2 @@
+5c993b9ffe30ece3010f42c9cd11ec92  goal_fan.c
+164b35e0db57b0fd99f6456658d53540  goal_fan.s

@@ -1,0 +1,23 @@
+{
+    "files.associations": {
+        "cmath": "c",
+        "complex": "c",
+        "limits": "c",
+        "centered.h": "c",
+        "array": "c",
+        "deque": "c",
+        "vector": "c",
+        "string_view": "c",
+        "*.tcc": "c",
+        "map": "c",
+        "fan.h": "c",
+        "output_vlices.h": "c",
+        "physics.h": "c",
+        "tracer-particles.h": "c",
+        "scatter2.h": "c",
+        "tracer.h": "c",
+        "particle.h": "c",
+        "octree.h": "c"
+    },
+    "git.ignoreLimitWarning": true
+}

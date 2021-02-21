@@ -1,0 +1,4 @@
+0 0 0 0
+iofclose.c:48:error: [Thread debugging using libthread_db enabled]
+iofclose.c:48:error: Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+iofclose.c:48:error: Program received signal SIGSEGV, Segmentation fault.

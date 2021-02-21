@@ -1,0 +1,1 @@
+return  dirichlet (9.81/273.*y*0.3);

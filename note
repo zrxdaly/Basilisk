@@ -1,0 +1,1 @@
+qcc -fopenmp -O2 main.c -lm -lglutils -lfb_osmesa -lGLU -lOSMesa -L$BASILISK/gl
