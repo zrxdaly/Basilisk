@@ -32,7 +32,7 @@ int main() {
     minlevel = 4;
     maxlevel = 8;
 
-    L0 = 800.;
+    L0 = 100.;
     X0 = Y0 = Z0 = 0.;
 
     // Possibility to run for variable changes
@@ -127,35 +127,36 @@ event mov (t += 1) {
 #elif (dimension == 3)
   scalar l2[];
   lambda2 (u, l2);
-    double thst = 0.5, then = 0;
-    double phist = 0.2, phien = 0;
+    double thst = -0.60, then = -0.5;
+    double phist = 0.2, phien = 0.2;
     double fovst = 15, foven = 10;
-    double txst = -0.1, txen = -0.25;
+    double txst = -0.3, txen = -0.35;
     double tyst = 0, tyen = 0;
     double fov, thetA, phI, tx, ty;
-  if (t<300){
-    thetA = thst  + t/300*(then  - thst);
-    phI   = phist + t/300*(phien - phist);
-    fov   = fovst + t/300*(foven - fovst);
-    tx    = txst + t/300*(txen - txst);
-    ty    = tyst + t/300*(tyen - tyst);
+  if (t<40){
+    thetA = thst  + t/40*(then  - thst);
+    phI   = phist + t/40*(phien - phist);
+    fov   = fovst + t/40*(foven - fovst);
+    tx    = txst + t/40*(txen - txst);
+    ty    = tyst + t/40*(tyen - tyst);
   view (fov = fov, theta = thetA, phi = phI, 
 	tx = tx, ty = ty, bg = {65./256,157./256,217./256},
 	width = 1080, height = 1080);
   }
   box();
+  draw_vof ("fan", edges = true);
   isosurface ("l2", -0.01);
-  translate (y = -5){
-    squares ("u.x", n = {0,1,0}, alpha = 5.,
-	     min = -1.2, max = 2, map = cool_warm);}
-  translate (z = -L0/2.){
-    squares ("b", n = {0,0,1}, alpha = L0/2.,
-	     min = -0.1, max = 0.6, map = cool_warm);}
-  translate (x = -L0/2.){
-    squares ("b", n = {1,0,0}, alpha = L0/2.,
-	     min = -0.1, max = 0.6, map = cool_warm);}
+  // translate (y = -5){
+  //   squares ("u.x", n = {0,1,0}, alpha = 5.,
+	//      min = -1.2, max = 2, map = cool_warm);}
+  // translate (z = -L0/2.){
+  //   squares ("b", n = {0,0,1}, alpha = L0/2.,
+	//      min = -0.1, max = 0.6, map = cool_warm);}
+  // translate (x = -L0/2.){
+  //   squares ("b", n = {1,0,0}, alpha = L0/2.,
+	//      min = -0.1, max = 0.6, map = cool_warm);}
 
-  scatter (parts);
+  // scatter (parts);
 #endif
 
   save ("lam_3D.mp4");
