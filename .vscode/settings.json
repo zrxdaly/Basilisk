@@ -17,7 +17,8 @@
         "scatter2.h": "c",
         "tracer.h": "c",
         "particle.h": "c",
-        "octree.h": "c"
+        "octree.h": "c",
+        "profile6.h": "c"
     },
     "git.ignoreLimitWarning": true
 }
