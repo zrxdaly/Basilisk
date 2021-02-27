@@ -13,7 +13,7 @@ int main() {
     foreach_level (l) {
       near[] = 0; 
       if (FUN(x - Delta/2.)*FUN(x + Delta/2.) <= 0)
-	near[] = (double)true;
+	      near[] = (double)true;
     }
     refine (near[] == (double)true && level <= l);
   }

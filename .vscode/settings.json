@@ -18,7 +18,8 @@
         "tracer.h": "c",
         "particle.h": "c",
         "octree.h": "c",
-        "profile6.h": "c"
+        "profile6.h": "c",
+        "quadtree.h": "c"
     },
     "git.ignoreLimitWarning": true
 }
