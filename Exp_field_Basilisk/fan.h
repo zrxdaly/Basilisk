@@ -43,11 +43,11 @@ void init_rotor() {
     if(!rot.W)
 	rot.W = 0.3;    
     if(!rot.Prho)                  
-     	rot.Prho = 2000.;		
+     	rot.Prho = 500.;		
     if(!rot.x0)
-    	rot.x0 = L0/4.;
+    	rot.x0 = -L0/4.;
     if(!rot.y0)
-	    rot.y0 = 5.5;
+	    rot.y0 = 0;
     if(!rot.z0){
         #if dimension == 2
             rot.z0 = 0.;
@@ -56,7 +56,7 @@ void init_rotor() {
         #endif
     }
     if(!rot.theta)
-    	rot.theta = 99*M_PI/180.;		// Polar angle
+    	rot.theta = 90*M_PI/180.;		// Polar angle
     if(!rot.phi)
         rot.phi = rot.ST_phit*M_PI/180.;	
         // Azimuthal angle 

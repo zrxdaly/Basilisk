@@ -19,7 +19,11 @@
         "particle.h": "c",
         "octree.h": "c",
         "profile6.h": "c",
-        "quadtree.h": "c"
+        "quadtree.h": "c",
+        "view.h": "c",
+        "bitree.h": "c",
+        "tree.h": "c",
+        "stream.h": "c"
     },
     "git.ignoreLimitWarning": true
 }

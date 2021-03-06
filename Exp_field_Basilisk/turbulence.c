@@ -5,7 +5,9 @@ We solve the two-dimensional incompressible Euler equations using a
 vorticity--streamfunction formulation. */
 
 #include "grid/multigrid.h"
-#include "navier-stokes/stream.h"
+// #include "navier-stokes/stream.h"
+#include "navier-stokes/centered.h"
+#include "view.h"
 
 /**
 The domain is square of size unity by default. The resolution is
@@ -21,8 +23,16 @@ The initial condition for vorticity is just a white noise in the range
 $[-1:1]$ .*/
 
 event init (i = 0) {
-  foreach()
-    omega[] = 2*noise();
+
+  // scalar omega[];
+  // vorticity (u, omega);
+  foreach(){
+    u.x[] = noise();
+    u.y[] = noise();
+  }
+    
+  // foreach()
+  //   omega[] = noise();
 }
 
 /**
@@ -31,14 +41,12 @@ $t=1000$. We fix the colorscale to $[-0.3:0.3]$.
 
 ![Evolution of the vorticity](turbulence/omega.mp4)(autoplay loop) */
 
-event output (i += 4; t <= 1000) {
+event output (i += 4; t <= 100) {
+  scalar omega[];
+  vorticity (u, omega);
   // output_ppm (omega, min = -0.3, max = 0.3, file = "omega.mp4");
-  // output_ppm (psi, file = "psi.mp4");
-  output_ppm (u.x, file = "uu.mp4");
-  output_ppm (u.y, file = "uu2.mp4");
+  squares ("omega", min = -0.3, max = 0.3, map = cool_warm );
+  mirror ({0,-1})
+    cells();
+  save ("omega.mp4");
 }
-
-// event graphs(i++){
-//   //  stats s = statsf(h);
-//    fprintf(stderr, "%g %g %g\n", t, psi.x, psi.y);
-// }

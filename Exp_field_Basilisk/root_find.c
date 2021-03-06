@@ -1,4 +1,5 @@
 #include "grid/bitree.h"
+// #include "view.h"
 
 #define FUN(x) (j1(x))
 scalar near[]; 

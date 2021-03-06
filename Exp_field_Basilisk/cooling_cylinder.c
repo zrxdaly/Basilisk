@@ -5,6 +5,7 @@
 #include "diffusion.h"
 #include "view.h"
 #include "profile6.h"
+
 scalar b[], * tracers = {b};
 
 double R = 0.005, B = -2e-3;
@@ -14,6 +15,7 @@ int maxlevel = 9;
 double be = 5e-3, ue = 1e-3;
 face vector nu[], av[];
 double U;
+double BB;
 
 int main() {
   periodic (left);
@@ -21,13 +23,14 @@ int main() {
   X0 = Y0 = -L0/2;
   mu = nu;
   a = av;
+  BB = -0.2;
   DT = 0.005;
+  run();
+  U = 0.1;
   run();
   U = 0.2;
   run();
   U = 0.3;
-  run();
-  U = 0.5;
   run();
 }
 
@@ -44,9 +47,11 @@ event init (t = 0) {
     phi[] = RAD - R;
   boundary ({phi});
   fractions (phi, cs, fs);
-  foreach()
+  foreach(){
     u.x[] = U*(cs[] > 0);
-  boundary ({u.x});
+    b[] = BB;
+  }
+  boundary (all);
 }
 
 event acceleration (i++) {
@@ -64,8 +69,6 @@ event heating_forcing (i++) {
   }
   boundary ({b, u.x});
 }
-
-
 
 event adapt (i++) {
   adapt_wavelet ({cs, b, u}, (double[]){1e-9, be, ue, ue, ue}, maxlevel);
@@ -100,6 +103,6 @@ event logger (t += 0.1) {
 
 event stop (t = 5) {
   char fname[99];
-  sprintf (fname, "prof%g", U);
+  sprintf (fname, "prof_BN3%g", U);
   profile ({b}, RAD, fname);
 }
