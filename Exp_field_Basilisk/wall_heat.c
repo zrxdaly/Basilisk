@@ -1,4 +1,4 @@
-#include "grid/octree.h"
+// #include "grid/octree.h"
 #include "embed.h"
 #include "navier-stokes/centered.h"
 #include "tracer.h"
@@ -63,10 +63,10 @@ u.t[top] = dirichlet(WIND(y));
 u.n[embed] = dirichlet (0.);
 u.t[embed] = dirichlet (0.);
 
-// b[bottom] = neumann(0.1*exp(-sq(x))/(5e-3)); // A local heat source
+b[bottom] = neumann(0.1*exp(-sq(x))/(5e-3)); // A local heat source
 // // b[bottom] = BSURF;
 // #if dimension == 3
-b[bottom] = neumann(0.1*exp(-sq(x)-sq(z-L0/2.))/(5e-3)); // A local heat source
+// b[bottom] = neumann(0.1*exp(-sq(x)-sq(z-L0/2.))/(5e-3)); // A local heat source
 // #endif  
 
 b[top] = dirichlet (P_B(y));

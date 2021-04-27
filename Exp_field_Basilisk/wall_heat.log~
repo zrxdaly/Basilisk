@@ -1,0 +1,10 @@
+/home/dai/software/basilisk/src/lambda2.h: In function ‘lambda2’:
+/home/dai/software/basilisk/src/lambda2.h:130:10: error: ‘vector {aka const struct <anonymous>}’ has no member named ‘z’
+     s = u.z; i = 0;
+          ^
+wall_heat.c: In function ‘main’:
+wall_heat.c:40:17: error: ‘front’ undeclared (first use in this function); did you mean ‘lrint’?
+   periodic(front);
+                 ^~   
+                 lrint
+wall_heat.c:40:17: note: each undeclared identifier is reported only once for each function it appears in

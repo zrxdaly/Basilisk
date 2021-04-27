@@ -23,7 +23,9 @@
         "view.h": "c",
         "bitree.h": "c",
         "tree.h": "c",
-        "stream.h": "c"
+        "stream.h": "c",
+        "fractions.h": "c",
+        "lambda2.h": "c"
     },
     "git.ignoreLimitWarning": true
 }

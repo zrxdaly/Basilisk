@@ -4,13 +4,98 @@ WARNING: convergence for pf not reached after 100 iterations
   res: 0.317427 sum: -5437.16 nrelax: 100
 WARNING: convergence for pf not reached after 100 iterations
   res: 0.186441 sum: -2481.38 nrelax: 100
-WARNING: convergence for pf not reached after 100 iterations
-  res: 0.163787 sum: -2076.5 nrelax: 100
-WARNING: convergence for pf not reached after 100 iterations
-  res: 0.0719847 sum: -839.085 nrelax: 100
-WARNING: convergence for pf not reached after 100 iterations
-  res: 0.0603851 sum: -640.443 nrelax: 100
-WARNING: convergence for pf not reached after 100 iterations
-  res: 0.0509183 sum: -458.211 nrelax: 100
-WARNING: convergence for pf not reached after 100 iterations
-  res: 0.035591 sum: -248.324 nrelax: 100
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  WARNING: library configuration mismatch
+  avcodec     configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared --enable-version3 --disable-doc --disable-programs --enable-libopencore_amrnb --enable-libopencore_amrwb --enable-libtesseract --enable-libvo_amrwbenc
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Input #0, image2pipe, from 'pipe:':
+  Duration: N/A, bitrate: N/A
+    Stream #0:0: Video: ppm, rgb24, 500x500, 25 tbr, 25 tbn, 25 tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (ppm (native) -> h264 (libx264))
+Finishing stream 0:0 without any data written to it.
+[libx264 @ 0x5555557dd180] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x5555557dd180] profile High, level 3.0
+Output #0, mpegts, to 'mov20003D.mp4':
+  Metadata:
+    encoder         : Lavf57.83.100
+    Stream #0:0: Video: h264 (libx264), yuv420p, 500x500, q=-1--1, 25 fps, 90k tbn, 25 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+frame=    0 fps=0.0 q=0.0 Lsize=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    
+video:0kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+Output file is empty, nothing was encoded (check -ss / -t / -frames parameters if used)
+Exiting normally, received signal 2.
+ffmpeg version 3.4.8-0ubuntu0.2 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.5.0-3ubuntu1~18.04)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared
+  WARNING: library configuration mismatch
+  avcodec     configuration: --prefix=/usr --extra-version=0ubuntu0.2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --enable-gpl --disable-stripping --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librubberband --enable-librsvg --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-omx --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libopencv --enable-libx264 --enable-shared --enable-version3 --disable-doc --disable-programs --enable-libopencore_amrnb --enable-libopencore_amrwb --enable-libtesseract --enable-libvo_amrwbenc
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libavresample   3.  7.  0 /  3.  7.  0
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+  libpostproc    54.  7.100 / 54.  7.100
+Input #0, image2pipe, from 'pipe:':
+  Duration: N/A, bitrate: N/A
+    Stream #0:0: Video: ppm, rgb24, 500x500, 25 tbr, 25 tbn, 25 tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (ppm (native) -> h264 (libx264))
+Finishing stream 0:0 without any data written to it.
+[libx264 @ 0x5555557dd180] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x5555557dd180] profile High, level 3.0
+Output #0, mpegts, to 'mov.mp4':
+  Metadata:
+    encoder         : Lavf57.83.100
+    Stream #0:0: Video: h264 (libx264), yuv420p, 500x500, q=-1--1, 25 fps, 90k tbn, 25 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: -1
+frame=    0 fps=0.0 q=0.0 Lsize=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    
+video:0kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+Output file is empty, nothing was encoded (check -ss / -t / -frames parameters if used)
+Exiting normally, received signal 2.
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [Thread debugging using libthread_db enabled]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffef46a700 (LWP 3423)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffeec69700 (LWP 3424)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffee468700 (LWP 3425)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffedc67700 (LWP 3426)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffed466700 (LWP 3427)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffecc65700 (LWP 3428)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd7fff700 (LWP 3429)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd77fe700 (LWP 3430)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd6ffd700 (LWP 3431)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd67fc700 (LWP 3432)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd5ffb700 (LWP 3433)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd57fa700 (LWP 3434)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd4ff9700 (LWP 3435)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd47f8700 (LWP 3436)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd3ff7700 (LWP 3437)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd37f6700 (LWP 3438)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd298f700 (LWP 3439)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffd218e700 (LWP 3440)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffce551700 (LWP 3441)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffcdd50700 (LWP 3442)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffcbb2e700 (LWP 3443)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffcb32d700 (LWP 3444)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffcab2c700 (LWP 3445)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: [New Thread 0x7fffca32b700 (LWP 3446)]
+/home/dai/software/basilisk/src/embed-tree.h:358:error: Thread 1 "wall_heat" received signal SIGINT, Interrupt.
