@@ -25,7 +25,10 @@
         "tree.h": "c",
         "stream.h": "c",
         "fractions.h": "c",
-        "lambda2.h": "c"
+        "lambda2.h": "c",
+        "diffusion.h": "c",
+        "diagnostics.h": "c",
+        "output_slices.h": "c"
     },
     "git.ignoreLimitWarning": true
 }

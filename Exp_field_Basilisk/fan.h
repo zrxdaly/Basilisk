@@ -5,7 +5,6 @@ scalar fan[];			// Fan volume fraction
 double Incre=0;
 double crho = 1.;
 
-
 struct sRotor {
     bool fan;
     double start;		// Starting time
@@ -43,11 +42,11 @@ void init_rotor() {
     if(!rot.W)
 	rot.W = 0.3;    
     if(!rot.Prho)                  
-     	rot.Prho = 500.;		
+     	rot.Prho = 2000.;		
     if(!rot.x0)
-    	rot.x0 = -L0/4.;
+    	rot.x0 = 0;
     if(!rot.y0)
-	    rot.y0 = 0;
+	    rot.y0 = 10.5;
     if(!rot.z0){
         #if dimension == 2
             rot.z0 = 0.;
@@ -56,7 +55,7 @@ void init_rotor() {
         #endif
     }
     if(!rot.theta)
-    	rot.theta = 90*M_PI/180.;		// Polar angle
+    	rot.theta = 99*M_PI/180.;		// Polar angle
     if(!rot.phi)
         rot.phi = rot.ST_phit*M_PI/180.;	
         // Azimuthal angle 
@@ -94,7 +93,7 @@ void init_rotor() {
 event forcing(i++) {
     if(rot.fan && t>rot.start && t<rot.stop) {
 	rotor_coord();
-	// rotor_forcing();
+	rotor_forcing();
     }
 }
 
@@ -166,62 +165,60 @@ void rotor_coord() {
 
     foreach () {
         fan[] = sph[]*plnu[]*plnd[];
-        // fan[] = sph[]*plnd[];
-        // fan[] = sph[];
     }
     boundary({fan});
 }
 
-// void rotor_forcing(){
-//     double tempW = 0.;
-//     double tempVol = 0.;
-//     double w, wsgn, damp, usgn, utemp, corrP;
+void rotor_forcing(){
+    double tempW = 0.;
+    double tempVol = 0.;
+    double w, wsgn, damp, usgn, utemp, corrP;
 
-//     foreach(reduction(+:tempVol)){
-//          tempVol += dv()*fan[];
-//     }
-//     rot.diaVol = 1*tempVol;    
-//     Point point = locate(rot.x0, rot.y0, rot.z0);
-//     if(fan[] == 0.){
-// 	foreach_dimension(){    	
-//              //Work in respective direction 
-// 	     wsgn = sign(rot.nf.x*u.x[]) + (sign(rot.nf.x*u.x[]) == 0)*sign(rot.nf.x);
-// 	     damp = rot.rampT + rot.start > t ? (t-rot.start)/rot.rampT : 1.;
-// 	     w = wsgn*damp*sq(rot.nf.x)*(2.)*rot.P/pow(Delta,3)*dt;
-// 	     tempW += fabs(w)/2*pow(Delta,3);
+    foreach(reduction(+:tempVol)){
+         tempVol += dv()*fan[];
+    }
+    rot.diaVol = 1*tempVol;    
+    Point point = locate(rot.x0, rot.y0, rot.z0);
+    if(fan[] == 0.){
+	foreach_dimension(){    	
+             //Work in respective direction 
+	     wsgn = sign(rot.nf.x*u.x[]) + (sign(rot.nf.x*u.x[]) == 0)*sign(rot.nf.x);
+	     damp = rot.rampT + rot.start > t ? (t-rot.start)/rot.rampT : 1.;
+	     w = wsgn*damp*sq(rot.nf.x)*(2.)*rot.P/pow(Delta,3)*dt;
+	     tempW += fabs(w)/2*pow(Delta,3);
 	
-// 	     // New kinetic energy
-// 	      utemp = sq(u.x[]) + w;
-// 	      usgn =   1.*(u.x[] >= 0)*(utemp > 0) +
-// 	              -1.*(u.x[] >= 0)*(utemp < 0) +
-// 	     	       1.*(u.x[] <  0)*(utemp < 0) +
-// 	     	      -1.*(u.x[] <  0)*(utemp > 0);
-//               u.x[] = usgn*min(sqrt(fabs(utemp)), sq(damp)*1.5*rot.cu); // Limiting the maximum speed
+	     // New kinetic energy
+	      utemp = sq(u.x[]) + w;
+	      usgn =   1.*(u.x[] >= 0)*(utemp > 0) +
+	              -1.*(u.x[] >= 0)*(utemp < 0) +
+	     	       1.*(u.x[] <  0)*(utemp < 0) +
+	     	      -1.*(u.x[] <  0)*(utemp > 0);
+              u.x[] = usgn*min(sqrt(fabs(utemp)), sq(damp)*1.5*rot.cu); // Limiting the maximum speed
 
-//          }
-//      } else {
+         }
+     } else {
 
-//      foreach(reduction(+:tempW)) {	
-// 	        if(fan[] > 0.) {
-//                 foreach_dimension() {
-// 	        // Work in respective direction 
-// 		wsgn = sign(rot.nf.x*u.x[]) + (sign(rot.nf.x*u.x[]) == 0)*sign(rot.nf.x);
-//   	        damp = rot.rampT + rot.start > t ? (t-rot.start)/rot.rampT : 1.;
-// 		corrP = rot.diaVol > 0. ? rot.V/rot.diaVol : 1.;
-// 		w = wsgn*fan[]*damp*sq(rot.nf.x)*(2./rho[])*(corrP*rot.P/rot.V)*dt;
-// 		tempW += dv()*fabs(w)/2;
+     foreach(reduction(+:tempW)) {	
+	        if(fan[] > 0.) {
+                foreach_dimension() {
+	        // Work in respective direction 
+		wsgn = sign(rot.nf.x*u.x[]) + (sign(rot.nf.x*u.x[]) == 0)*sign(rot.nf.x);
+  	        damp = rot.rampT + rot.start > t ? (t-rot.start)/rot.rampT : 1.;
+		corrP = rot.diaVol > 0. ? rot.V/rot.diaVol : 1.;
+		w = wsgn*fan[]*damp*sq(rot.nf.x)*(2./rho[])*(corrP*rot.P/rot.V)*dt;
+		tempW += dv()*fabs(w)/2;
 
-// 		// New kinetic energy
-// 		utemp = sq(u.x[]) + w;
-// 		usgn = 	  1.*(u.x[] >= 0)*(utemp > 0) +
-// 		    	 -1.*(u.x[] >= 0)*(utemp < 0) +
-// 			  1.*(u.x[] <  0)*(utemp < 0) +
-// 			 -1.*(u.x[] <  0)*(utemp > 0); 
+		// New kinetic energy
+		utemp = sq(u.x[]) + w;
+		usgn = 	  1.*(u.x[] >= 0)*(utemp > 0) +
+		    	 -1.*(u.x[] >= 0)*(utemp < 0) +
+			  1.*(u.x[] <  0)*(utemp < 0) +
+			 -1.*(u.x[] <  0)*(utemp > 0); 
 
-// 		u.x[] = usgn*min(sqrt(fabs(utemp)), sq(damp)*1.5*rot.cu); // Limiting the maximum speed
-// 	     }
-// 	}
-//     }    
-//     }
-//     rot.Work += tempW;
-// }
+		u.x[] = usgn*min(sqrt(fabs(utemp)), sq(damp)*1.5*rot.cu); // Limiting the maximum speed
+	     }
+	}
+    }    
+    }
+    rot.Work += tempW;
+}

@@ -15,7 +15,7 @@
 #define Tref 273.
 #define INV 0.3
 #define P_B(s) G/Tref*s*INV
-double TEND = 1240.;
+double TEND = 60.;
 
 scalar b[], * tracers = {b};
 
@@ -23,7 +23,7 @@ face vector av[];
 // const face vector muc[] = {5e-3, 5e-3};
 face vector muv[];
 
-int maxlevel = 10;
+int maxlevel = 7;
 
 int main() {
   #if dimension == 2
@@ -31,7 +31,7 @@ int main() {
   #elif dimension == 3
     periodic(front);
   #endif
-  L0 = 900;
+  L0 = 500;
   X0 = -L0/2;
 
 
@@ -69,7 +69,7 @@ b[top] = dirichlet (P_B(y));
 event init (t = 0) {
   rot.fan = true;		// Yes we want a fan
   rot.rotate = true;		// If we want it to rotate
-  rot.start = 60.;            // start time of rotor forcing
+  rot.start = 0.;            // start time of rotor forcing
   rot.stop = 1020.;           // stop time of rotor forcing
   
   if(rot.fan) {
@@ -140,22 +140,22 @@ event mov (t += 1) {
 }
 
 
-char dir_slices[60];
+// char dir_slices[60];
 
-event slices (t += 1) {
-  char nameslice[91];
-  int res = L0/2;
-  coord slice = {1., 1.};
-  snprintf(nameslice, 90, "%st=%05g", dir_slices, t*10.);
-  FILE * fpsli = fopen(nameslice, "w");
-  fprintf (fpsli, "t=%05g\n", t);
+// event slices (t += 1) {
+//   char nameslice[91];
+//   int res = L0/2;
+//   coord slice = {1., 1.};
+//   snprintf(nameslice, 90, "%st=%05g", dir_slices, t*10.);
+//   FILE * fpsli = fopen(nameslice, "w");
+//   fprintf (fpsli, "t=%05g\n", t);
   
-  for (double yT = 0.5; yT <= 5.; yT+=0.5){
-    slice.y = yT/L0;
-    output_slice(list = (scalar *){b}, fp = fpsli, n = res, linear = true, plane =slice);
-  } 
-  fclose(fpsli);
-}
+//   for (double yT = 0.5; yT <= 5.; yT+=0.5){
+//     slice.y = yT/L0;
+//     output_slice(list = (scalar *){b}, fp = fpsli, n = res, linear = true, plane =slice);
+//   } 
+//   fclose(fpsli);
+// }
 
 
 event adapt (i++) 
