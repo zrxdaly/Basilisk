@@ -41,11 +41,11 @@ void init_rotor() {
     if(!rot.W)
 	rot.W = 0.3;    
     if(!rot.Prho)                  
-     	rot.Prho = 2000.;		
+     	rot.Prho = 1000.;		
     if(!rot.x0)
-    	rot.x0 = -L0/3.;
+    	rot.x0 = L0/2.;
     if(!rot.y0)
-	    rot.y0 = L0/3.;
+	    rot.y0 = L0/2.;
     if(!rot.z0){
         #if dimension == 2
             rot.z0 = 0.;

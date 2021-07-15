@@ -12,19 +12,19 @@
 /** Global variables */
 int minlevel, maxlevel;                 // Grid depths
 double meps, eps;                       // Maximum error and error in u fields
-double TEND = 100;
+double TEND = 1200;
 
 #include "physics.h"                    // Physics of the simulation 
 #include "fan.h"                        // Include a fan
-#include "output_vlices.h"
+#include "output_slices.h"
 
 /** Initialisation */
 int main() {
     minlevel = 5;
-    maxlevel = 9;
+    maxlevel = 8;
 
-    L0 = 600.;
-    X0 = -L0/2.;
+    L0 = 700.;
+    X0 = Y0 = Z0 = 0.;
 
     init_grid(1<<7);
     a = av;
@@ -57,9 +57,9 @@ int main() {
 /** Initialisation */
 event init(t=0) {
     rot.fan = true;             // Yes we want a fan
-    rot.rotate = true;          // If we want it to rotate 
-    rot.start = 0;
-    rot.stop = 1500;
+    rot.rotate = false;          // If we want it to rotate 
+    rot.start = 100;
+    rot.stop = 900;
 
     // rot.phi = 0;             // Reset for different runs
     eps = .5;
@@ -134,27 +134,40 @@ event mov (t += 0.5) {
   save ("mov.mp4");
 }
 
+
 char dir_slices[61];
 
 event slices(t += 1) {
     char B_Slice[91];
     char U_Slice[91];
+    char V_Slice[91];
+    char W_Slice[91];
+
     coord slice = {1., 0., 1.};
     int res = L0/2;
 
-    for(double yTemp = 1.; yTemp<=10.; yTemp+=1.) {
-            slice.y = yTemp/L0;z
+    for(double yTemp = 250.; yTemp<=450.; yTemp+=2.) {
+            slice.y = yTemp/L0;
 
         snprintf(B_Slice, 90, "%st=%05gy=%03g", "./resultslice/buo/", t, yTemp);
         FILE * fpsli = fopen(B_Slice, "w");
         output_slice(list = (scalar *){b}, fp = fpsli, n = res, linear = true, plane=slice);
         fclose(fpsli);
-        snprintf(U_Slice, 90, "%st=%05gy=%03g", "./resultslice/vel/", t, yTemp);
+        snprintf(U_Slice, 90, "%st=%05gy=%03g", "./resultslice/vel_u/", t, yTemp);
         FILE * fpsli_u = fopen(U_Slice, "w");
         output_slice(list = (scalar *){u.x}, fp = fpsli_u, n = res, linear = true, plane=slice);
         fclose(fpsli_u);
+        // snprintf(V_Slice, 90, "%st=%05gy=%03g", "./resultslice/vel_v/", t, yTemp);
+        // FILE * fpsli_v = fopen(V_Slice, "w");
+        // output_slice(list = (scalar *){u.z}, fp = fpsli_v, n = res, linear = true, plane=slice);
+        // fclose(fpsli_v);
+        snprintf(W_Slice, 90, "%st=%05gy=%03g", "./resultslice/vel_w/", t, yTemp);
+        FILE * fpsli_w = fopen(W_Slice, "w");
+        output_slice(list = (scalar *){u.y}, fp = fpsli_w, n = res, linear = true, plane=slice);
+        fclose(fpsli_w);
     }
 }
+
 
 event end(t=TEND) {
 }

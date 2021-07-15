@@ -5,19 +5,18 @@
 #define CP 1005.	// C_p for air 
 #define gCONST 9.81	// Gravitational constant
 #define TREF 273.	// Kelvin
-#define INVERSION 1. 	// Kelvin per meter
+#define INVERSION .7 	// Kelvin per meter
 #define karman 0.4      // von Karman constant 
 
-#define roughY0u 2.1    // roughness wind length 
-#define roughY0h 1.5     // roughness heat length
+#define roughY0u 0.36    // roughness wind length 
+#define roughY0h 0.36     // roughness heat length
 
-#define WINDu(s) (max(1.1*log(s/roughY0u),0.))   // log Wind profile 
-#define WINDv(s) (max(1.4*log(s/roughY0u),0.))
+#define WIND(s) (max(0.25*log(s/roughY0u),0.))   // log Wind profile 
 #define QFLX 0. 	// 0 (0.001 = 20wm2)
 #define BSURF ((b[0,1]-b[]*lut2[level])/(1.-lut2[level]))
 #define GFLX (-Lambda*(BSURF - bd))
 double Lambda = 0.005, bd = 0.;   // Grass coupling
-#define STRAT(s) max(5 * gCONST/TREF*(log(INVERSION*(s/roughY0h))), 0) + (QFLX/Lambda + bd)
+#define STRAT(s) max(3.3657 * gCONST/TREF*(log(0.5*(s/roughY0h))), 0) + (QFLX/Lambda + bd)
 
 scalar b[];
 scalar * tracers = {b};
@@ -39,8 +38,8 @@ void init_physics(){
 	b.nodump = false; 
 	u.n[bottom] = dirichlet(0.);
 	u.t[bottom] = dirichlet(0.);
-	u.n[top] = dirichlet(0);
-	u.t[top] = dirichlet(WINDu(y));
+	u.n[top] = dirichlet(0.);
+	u.t[top] = dirichlet(WIND(y));
 
 
 	periodic (left);
@@ -49,7 +48,7 @@ void init_physics(){
 	b[top] = dirichlet(STRAT(y));
 	
 	#if dimension == 3
-		u.r[top] = dirichlet(WINDu(y));
+		u.r[top] = dirichlet(WIND(y));
 	    u.r[bottom] = dirichlet(0.); 
 		u.t[top] = neumann(0.); 
 		
@@ -57,13 +56,12 @@ void init_physics(){
 		Evis[top] = dirichlet(0.);
 
 	    periodic(front);
-	    periodic(right);
 	#endif  
 	foreach() {
 		b[] = STRAT(y);
 		if(fabs(def.wind) > 0.) {
-			u.x[] = WINDu(y);
-			u.z[] = -WINDv(y);
+			u.x[] = WIND(y);
+			u.z[] = -tan(50)*WIND(y);
 		}
 	}
 }
@@ -100,10 +98,10 @@ event inflow(i++){
 	   (y > L0-2*sides )) {
 	    double a = (x < sides) ? x : fabs(x-L0);
 	    a = 1.; 
-	    u.x[] = u.x[] + a*(WINDu(y)-u.x[])*relaxtime;
+	    u.x[] = u.x[] + a*(WIND(y)-u.x[])*relaxtime;
  	    b[] = b[] + a*(STRAT(y) - b[])*relaxtime;
 	    u.y[] = u.y[] - a*u.y[]*relaxtime;
-	    u.z[] = u.z[] - u.z[]*relaxtime;
+		u.z[] = u.z[] - a*u.z[]*relaxtime;
 	}
     }
 }
