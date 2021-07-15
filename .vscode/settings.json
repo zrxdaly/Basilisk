@@ -26,6 +26,7 @@
         "stream.h": "c",
         "fractions.h": "c",
         "lambda2.h": "c",
+<<<<<<< HEAD
         "cartesian1d.h": "c",
         "run.h": "c",
         "multigrid-common.h": "c",
@@ -36,6 +37,11 @@
         "fstream": "c",
         "istream": "c",
         "ostream": "c"
+=======
+        "diffusion.h": "c",
+        "diagnostics.h": "c",
+        "output_slices.h": "c"
+>>>>>>> 59dcd35be07eeab359621365b308c9ff0a54b7bb
     },
     "git.ignoreLimitWarning": true
 }

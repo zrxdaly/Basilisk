@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 [Detaching after vfork from child process 118011]
 [Detaching after vfork from child process 118018]
+=======
+[Detaching after vfork from child process 338293]
+[Detaching after vfork from child process 338300]
+885	libioP.h: No such file or directory.
+>>>>>>> 59dcd35be07eeab359621365b308c9ff0a54b7bb

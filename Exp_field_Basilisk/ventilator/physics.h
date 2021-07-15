@@ -16,7 +16,11 @@
 #define BSURF 0  // (1.5*b[] - 0.5*b[0, 1])
 #define GFLX 0  //  (-Lambda*(BSURF - bd))
 // double Lambda = 0.005, bd = 0.;   // Grass coupling
+<<<<<<< HEAD
 #define STRAT(s) 0.1  // gCONST/TREF*s*INVERSION
+=======
+#define STRAT(s) 0  // gCONST/TREF*s*INVERSION
+>>>>>>> 59dcd35be07eeab359621365b308c9ff0a54b7bb
 
 scalar b[];
 scalar * tracers = {b};
@@ -114,6 +118,7 @@ event inflow(i++){
 mgstats mgb;
 /* Diffusion */
 event tracer_diffusion(i++){
+<<<<<<< HEAD
     scalar r[];
     foreach() {
         r[] = 0;
@@ -132,4 +137,24 @@ event tracer_diffusion(i++){
     fprintf(stderr, "soil=%g %g %g %d\n", t, fctr*flx, fctr*bt/CP, i);  
     
     mgb = diffusion(b, dt, mu, r = r);
+=======
+    // scalar r[];
+    // foreach() {
+    //     r[] = 0;
+    //     if (y < Delta)
+    //         r[] = (QFLX + GFLX)/sq(Delta); // div needed as normalization 
+    // }
+    
+    // double flx = 0, bt = 0;
+    // double fctr = CP*TREF/gCONST;
+    // foreach_boundary(bottom reduction(+:flx) reduction(+:bt)) {
+    //     flx = flx + (QFLX + GFLX) * sq(Delta);
+    //      bt = bt + BSURF * sq(Delta);
+    // }
+    // bt = bt/sq(L0);
+    // flx = flx/sq(L0);
+    // fprintf(stderr, "soil=%g %g %g %d\n", t, fctr*flx, fctr*bt/CP, i);  
+    
+    mgb = diffusion(b, dt, mu);
+>>>>>>> 59dcd35be07eeab359621365b308c9ff0a54b7bb
 }

@@ -43,9 +43,15 @@ void init_rotor() {
     if(!rot.Prho)                  
      	rot.Prho = 2000.;		
     if(!rot.x0)
+<<<<<<< HEAD
     	rot.x0 = 0;
     if(!rot.y0)
 	    rot.y0 = L0/2;
+=======
+    	rot.x0 = -L0/3.;
+    if(!rot.y0)
+	    rot.y0 = L0/3.;
+>>>>>>> 59dcd35be07eeab359621365b308c9ff0a54b7bb
     if(!rot.z0){
         #if dimension == 2
             rot.z0 = 0.;
