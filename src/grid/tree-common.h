@@ -153,6 +153,7 @@ void mpi_boundary_update  (scalar *);
 typedef struct {
   int nc, nf;
 } astats;
+// output structure
 
 struct Adapt {
   scalar * slist; // list of scalars
@@ -161,12 +162,14 @@ struct Adapt {
   int minlevel;   // minimum level of refinement (default 1)
   scalar * list;  // list of fields to update (default all)
 };
+// input structure
 
 trace
 astats adapt_wavelet (struct Adapt p)
 {
   if (p.list == NULL)
     p.list = all;
+// if scalar * list is not called, then default update all field
   if (is_constant(cm))
     restriction (p.slist);
   else {
@@ -174,6 +177,7 @@ astats adapt_wavelet (struct Adapt p)
     restriction (listr);
     free (listr);
   }
+// this loop should always go to first loop right? and second loop is to concat a list of 1 in to plist. ??? 
 
   astats st = {0, 0};
   scalar * listc = NULL;
@@ -181,12 +185,21 @@ astats adapt_wavelet (struct Adapt p)
     if (!is_constant(s) && s.restriction != no_restriction)
       listc = list_add (listc, s);
 
+
   // refinement
   if (p.minlevel < 1)
     p.minlevel = 1;
+// if the minlevel is not called as a argument, then let it be 1
   tree->refined.n = 0;
+// set the refined cells number as zero
   static const int refined = 1 << user, too_fine = 1 << (user + 1);
+// refined = 2 ** 4; too_fine = 2 ** 5
   foreach_cell() {
+// first check if it is active cell(what is active cell??? verse ghost cell?? maybe); too_coarse = 2 ** 6
+//    then check if it's leaf cell, 
+//         if this leaf cell is flagged as too_coarse, then make the flags zero and refine the cell and field, if it is not coarse flagged, then continue
+//    if it is not a leaf cell,
+//         and if this cell is flagged as refined, then keep the flag there
     if (is_active(cell)) {
       static const int too_coarse = 1 << (user + 2);
       if (is_leaf (cell)) {
@@ -204,6 +217,9 @@ astats adapt_wavelet (struct Adapt p)
 	  continue;
 	}
 	// check whether the cell or any of its children is local
+// what is a local cell??? 
+// if it's not local cell, check if their children is local cell, if it's true then set local as true and break
+// if it's local, just_fine = 2 ** 7;
 	bool local = is_local(cell);
 	if (!local)
 	  foreach_child()
@@ -213,26 +229,37 @@ astats adapt_wavelet (struct Adapt p)
 	  int i = 0;
 	  static const int just_fine = 1 << (user + 3);
 	  for (scalar s in p.slist) {
+// get maximum tolerance for each scalar; sc have the dimension   1D: sc[2]   2D: sc[4]   3D: sc[8]
 	    double max = p.max[i++], sc[1 << dimension];
 	    int c = 0;
 	    foreach_child()
 	      sc[c++] = s[];
+      // copy s scalar field
 	    s.prolongation (point, s);
+      // interpolate s field
 	    c = 0;
 	    foreach_child() {
 	      double e = fabs(sc[c] - s[]);
 	      if (e > max && level < p.maxlevel) {
-		cell.flags &= ~too_fine;
-		cell.flags |= too_coarse;
+          cell.flags &= ~too_fine;
+          cell.flags |= too_coarse;
 	      }
+        // if the difference is larger than the tolerance and the level is below the maxlevel
+        // flag this cell as too_coarse
+
+        // if the difference is smaller than 2/3 tolerance OR the level is too large AND ()
+        // flag this cell as too_fine
+
+        // if the flags is not too_coarse: make it just fine
+
 	      else if ((e <= max/1.5 || level > p.maxlevel) &&
 		       !(cell.flags & (too_coarse|just_fine))) {
-		if (level >= p.minlevel)
-		  cell.flags |= too_fine;
+		            if (level >= p.minlevel)
+		              cell.flags |= too_fine;
 	      }
 	      else if (!(cell.flags & too_coarse)) {
-		cell.flags &= ~too_fine;
-		cell.flags |= just_fine;
+          cell.flags &= ~too_fine;
+          cell.flags |= just_fine;
 	      }
 	      s[] = sc[c++];
 	    }
@@ -242,7 +269,7 @@ astats adapt_wavelet (struct Adapt p)
 	    if (!is_leaf(cell)) {
 	      cell.flags &= ~too_coarse;
 	      if (level >= p.maxlevel)
-		cell.flags |= too_fine;
+		      cell.flags |= too_fine;
 	    }
 	    else if (!is_active(cell))
 	      cell.flags &= ~too_coarse;

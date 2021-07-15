@@ -1,0 +1,5 @@
+set terminal png
+set xlabel "x"
+set ylabel "T"
+set output 'case_ad_bc.png'
+plot[-11:11][]'out' u ($1):($2) t 'numerical' w l

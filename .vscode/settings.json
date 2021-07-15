@@ -25,7 +25,17 @@
         "tree.h": "c",
         "stream.h": "c",
         "fractions.h": "c",
-        "lambda2.h": "c"
+        "lambda2.h": "c",
+        "cartesian1d.h": "c",
+        "run.h": "c",
+        "multigrid-common.h": "c",
+        "cartesian-common.h": "c",
+        "events.h": "c",
+        "type_traits": "c",
+        "mempool.h": "c",
+        "fstream": "c",
+        "istream": "c",
+        "ostream": "c"
     },
     "git.ignoreLimitWarning": true
 }

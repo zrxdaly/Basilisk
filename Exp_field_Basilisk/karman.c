@@ -15,7 +15,7 @@ advect the passive tracer *f*. */
 
 #include "embed.h"
 #include "navier-stokes/centered.h"
-#include "navier-stokes/perfs.h"
+// #include "navier-stokes/perfs.h"
 #include "tracer.h"
 
 scalar f[];
@@ -26,9 +26,9 @@ face vector muv[];
 The domain is eight units long, centered vertically. */
 
 int main() {
-  L0 = 16.;
+  L0 = 10.;
   origin (-0.5, -L0/2.);
-  N = 512;
+  N = 256;
   mu = muv;
   run(); 
 }
@@ -60,8 +60,9 @@ pf[right]  = dirichlet(0.);
 /**
 The top and bottom walls are free-slip and the cylinder is no-slip. */
 
-u.n[embed] = fabs(y) > 0.25 ? neumann(0.) : dirichlet(0.);
-u.t[embed] = fabs(y) > 0.25 ? neumann(0.) : dirichlet(0.);
+u.n[embed] = fabs(y) > 5 ? neumann(0.) : dirichlet(0.);
+u.t[embed] = fabs(y) > 5 ? neumann(0.) : dirichlet(0.);
+
 
 event init (t = 0)
 {
@@ -72,7 +73,7 @@ event init (t = 0)
 
   vertex scalar phi[];
   foreach_vertex() {
-    phi[] = intersection (0.5 - y, 0.5 + y);
+    phi[] = intersection (5 - y, 5 + y);
     phi[] = intersection (phi[], sq(x) + sq(y) - sq(0.125/2.));
   }
   boundary ({phi});
@@ -81,10 +82,11 @@ event init (t = 0)
   /**
   We set the initial velocity field. */
   
-  foreach()
+  foreach(){
     u.x[] = cs[] ? 1. : 0.;
+    u.y[] = cs[] ? 1. : 0.;
+    }
 }
-
 
 /**
 We check the number of iterations of the Poisson and viscous
@@ -103,9 +105,9 @@ event movies (i += 4; t <= 15.)
   foreach()
     m[] = cs[] - 0.5;
   boundary ({m});
-  output_ppm (omega, file = "vort.mp4", box = {{-0.5,-0.5},{7.5,0.5}},
+  output_ppm (omega, file = "vort.mp4",
 	      min = -10, max = 10, linear = true, mask = m);
-  output_ppm (f, file = "f.mp4", box = {{-0.5,-0.5},{7.5,0.5}},
+  output_ppm (f, file = "f.mp4",
 	      linear = false, min = 0, max = 1, mask = m);
 }
 
@@ -114,7 +116,7 @@ We adapt according to the error on the embedded geometry, velocity and
 tracer fields. */
 
 event adapt (i++) {
-  adapt_wavelet ({cs, u,f}, (double[]){0.01, 3e-2,3e-2,3e-2}, 9, 4);
+  adapt_wavelet ({cs,u,f}, (double[]){1e-2,3e-2,3e-2,3e-2}, 8, 4);
 }
 
 /**

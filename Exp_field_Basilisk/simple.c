@@ -25,7 +25,7 @@ event init (t = 0)
   boundary ((scalar *){u});
 }
 
-event movie (t += 0.2; t <= 60) {
+event movie (t += 0.2; t <= 70) {
   scalar omega[];
   vorticity (u, omega);
   output_ppm (omega, linear = true, file = "vort.mp4");

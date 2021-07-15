@@ -1,3 +1,0 @@
-qcc -autolink -O2 -g -Wall -pipe -D_FORTIFY_SOURCE=2 -o karman/karman karman.c  -lm
-а•ге-V: No such file or directory
-make: *** [karman.s] Error 1

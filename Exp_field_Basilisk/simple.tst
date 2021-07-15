@@ -1,2 +1,2 @@
-54e9625382bc103ce56daf4d6faef8a0  simple.c
-b54ecdfca6e540bb8d7cfe0e338c63b9  simple.s
+73625958842164482e0f745044521cd3  simple.c
+b39e1820b49bad84deabb82ccbaa4a70  simple.s
