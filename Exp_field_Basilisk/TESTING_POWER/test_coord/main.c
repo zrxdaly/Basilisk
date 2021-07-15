@@ -14,7 +14,7 @@
 /** Global variables */
 int minlevel, maxlevel;         	// Grid depths
 double meps, eps;			// Maximum error and error in u fields
-double TEND = 1200;
+double TEND = 600;
 
 char sim_ID[] = "krab";		        // Simulation identifier
 // char sim_var[] = "Trot";  		// Notes if a variable is varied over runs
@@ -28,7 +28,7 @@ char sim_ID[] = "krab";		        // Simulation identifier
 /** Initialisation */
 int main() {	
     minlevel = 4;
-    maxlevel = 8;
+    maxlevel = 7;
 
     L0 = 700.;
     X0 = Y0 = Z0 = 0.;
@@ -39,7 +39,7 @@ int main() {
 	
     //     rot.theta = tempVar*M_PI/180;
 
-    init_grid(1<<7);
+    init_grid(1<<6);
     a = av; 
 
     foreach_dimension() {
@@ -63,6 +63,7 @@ int main() {
 	// out.sim_i++;					// Simulation iteration
  
     run();						// Start simulation 
+
 }
 
 
@@ -86,8 +87,7 @@ event init(t=0) {
     while(adapt_wavelet((scalar *){u,b},(double []){eps,eps,eps,0.35*9.81/273},maxlevel,minlevel).nf) {
 	foreach() {
 	    b[] = STRAT(y);
-        u.x[] = WINDu(y);
-	    u.z[] = -WINDv(y);
+        u.x[] = WIND(y);
 	}
 	rotor_coord();
     }
