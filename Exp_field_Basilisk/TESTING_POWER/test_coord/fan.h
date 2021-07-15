@@ -41,29 +41,11 @@ void init_rotor() {
     if(!rot.W)
 	rot.W = 0.3;    
     if(!rot.Prho)                  
-     	rot.Prho = 1000.;		
+     	rot.Prho = 10000.;		
     if(!rot.x0)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    	rot.x0 = 0;
-    if(!rot.y0)
-	    rot.y0 = L0/2;
-=======
-    	rot.x0 = -L0/3.;
-    if(!rot.y0)
-	    rot.y0 = L0/3.;
->>>>>>> 59dcd35be07eeab359621365b308c9ff0a54b7bb
-=======
     	rot.x0 = L0/2.;
     if(!rot.y0)
-	    rot.y0 = L0/2.;
->>>>>>> 019d516e99d02d15c703525f21c71ff783ebc962
-=======
-    	rot.x0 = L0/2.;
-    if(!rot.y0)
-	    rot.y0 = L0/2.;
->>>>>>> 019d516e99d02d15c703525f21c71ff783ebc962
+	    rot.y0 = 10.5;
     if(!rot.z0){
         #if dimension == 2
             rot.z0 = 0.;
@@ -72,7 +54,7 @@ void init_rotor() {
         #endif
     }
     if(!rot.theta)
-    	rot.theta = 90*M_PI/180.;		// Polar angle
+    	rot.theta = 97*M_PI/180.;		// Polar angle
     if(!rot.phi)
         rot.phi = rot.ST_phit*M_PI/180.;	
         // Azimuthal angle 
@@ -238,4 +220,11 @@ void rotor_forcing(){
     }    
     }
     rot.Work += tempW;
+}
+
+event engine(i++) {
+    double engine_heat = rot.P/0.1;
+    double damp = rot.rampT + rot.start > t ? (t-rot.start)/rot.rampT : 1.;
+    Point point = locate(rot.x0, 1., rot.z0);
+    b[] += damp*engine_heat/(CP*pow(Delta,3))*gCONST/TREF*dt;
 }

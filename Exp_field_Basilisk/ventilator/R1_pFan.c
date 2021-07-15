@@ -18,6 +18,7 @@ int minlevel, maxlevel;                 // Grid depths
 double meps, eps;                       // Maximum error and error in u fields
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 double TEND = 120;
 
 #include "physics.h"                    // Physics of the simulation 
@@ -46,6 +47,9 @@ int main() {
         // b.gradient = minmod2;                           // Flux limiter 
 =======
 double TEND = 100;
+=======
+double TEND = 1200;
+>>>>>>> 019d516e99d02d15c703525f21c71ff783ebc962
 =======
 double TEND = 1200;
 >>>>>>> 019d516e99d02d15c703525f21c71ff783ebc962
@@ -198,7 +202,11 @@ event mov (t += 0.5) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> 019d516e99d02d15c703525f21c71ff783ebc962
 =======
 
 >>>>>>> 019d516e99d02d15c703525f21c71ff783ebc962
@@ -235,6 +243,7 @@ event slices(t += 1) {
     }
 }
 >>>>>>> 59dcd35be07eeab359621365b308c9ff0a54b7bb
+
 
 
 event end(t=TEND) {
